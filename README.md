@@ -1,5 +1,4 @@
 # expr
-<hr \>
 
 expr is an Elixir library for parsing and evaluating mathematical expressions.
 
@@ -103,7 +102,7 @@ Expr.eval!("-(sqrt(abs(some_var)))", %{"some_var" => -2.5})
 Expr.eval!("ABC+2^CBA", %{"ABC" => 2, "CBA" => 3})
 => [10.0]
 
-vars = %{"a" => 2.5, "b" => 3, "c" => 0.25, "d" => 10, "z" => 6.5} #Notice I didn't use 'e', 'e' refers to the constant e
+vars = %{"a" => 2.5, "b" => 3, "c" => 0.25, "d" => 10, "z" => 6.5}
 Expr.eval!("a^(b+c)-d(z)", vars)
 => [-45.35260266120413]
 ```
@@ -140,5 +139,6 @@ Expr.eval!("a^(b+c)-d(z)", vars)
 
 ```
 This work is free. You can redistribute it and/or modify it under the
-terms of the MIT License. See the LICENSE file for more details.```
+terms of the MIT License. See the LICENSE file for more details.
+```
 
