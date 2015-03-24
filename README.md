@@ -133,7 +133,7 @@ Expr.eval!("a^(b+c)-d(z)", vars)
 - Expression validator
 - Improved implicit multiplication
 - Clean up messy parser code
-- Comments!
+- Comments.
 
 ## License
 
