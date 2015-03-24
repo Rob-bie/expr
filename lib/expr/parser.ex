@@ -30,10 +30,7 @@ defmodule Expr.Parser do
 
   def parse(tokens), do: parse(tokens, {[], []})
   def parse([], {[], rpn}), do: Enum.reverse(rpn)
-
-  def parse([], {[o|t], rpn}) do 
-    parse([], {t, [o|rpn]})
-  end
+  def parse([], {[o|t], rpn}), do: parse([], {t, [o|rpn]})
 
   def parse([e|t], {ops, rpn}) when is_number(e) do
     parse(t, {ops, push(rpn, e)})
