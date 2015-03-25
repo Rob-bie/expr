@@ -32,6 +32,9 @@ defmodule Expr.Ops do
       "-"     => %Ops{:p => 2, :f => &(&1 - &2), :a => :l}}
   end
 
+  def fact(0.0), do: 1.0
+  def fact(0), do: 1
+
   def fact(n) do
    {i, dec} = to_string(n) |> Integer.parse
    case {i, dec} do
