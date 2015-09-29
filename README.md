@@ -64,7 +64,7 @@ The result of all evaluations are returned at the front of a list. As of version
 
 ```elixir
 Expr.eval!("1 + 2 * 3")
-=> [6.0]
+=> [7.0]
 
 Expr.eval!("5/2")
 => [2.5]
