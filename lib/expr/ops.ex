@@ -50,7 +50,7 @@ defmodule Expr.Ops do
 
   def fmod(x, y) do
     n = Float.floor( x / y )
-    x - y * n |> Float.round(15)
+    x - y * n
   end
 
 end

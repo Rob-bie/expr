@@ -65,8 +65,9 @@ defmodule ExprTest do
   test "fmod returns the floating-point remainder of the division x/y" do
     {x, y} = { 5.1, 3.0 }
     result = 2.1
+    precision = 15 #avoid hardcoding higly precision float
 
-    assert Expr.Ops.fmod(x, y) == result 
+    assert Expr.Ops.fmod(x, y)|>Float.round(precision) == result 
   end
 
   test "1 + 1 -> postfix" do
