@@ -28,6 +28,7 @@ defmodule Expr.Ops do
       "^"     => %Ops{:p => 4, :f => &:math.pow/2},
       "*"     => %Ops{:p => 3, :f => &(&1 * &2), :a => :l},
       "/"     => %Ops{:p => 3, :f => &(&1 / &2), :a => :l},
+      "%"     => %Ops{:p => 3, :f => &fmod/2,    :a => :l},
       "+"     => %Ops{:p => 2, :f => &(&1 + &2), :a => :l},
       "-"     => %Ops{:p => 2, :f => &(&1 - &2), :a => :l}}
   end
@@ -47,5 +48,7 @@ defmodule Expr.Ops do
   def fact(0, acc), do: acc
   def fact(n, acc), do: fact(n - 1, acc * n)
 
+  def fmod(n, denom), do: n - denom * Float.floor( n / denom )
+  
 end
 

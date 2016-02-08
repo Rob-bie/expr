@@ -62,6 +62,13 @@ defmodule ExprTest do
            |> Expr.Parser.format == result
   end
 
+  test "fmod returns the floating-point remainder of the division x/y" do
+    {x, y} = { 5.1, 3.0 }
+    result = 2.1
+    precision = 15 #avoid hardcoding higly precision float
+
+    assert Expr.Ops.fmod(x, y)|>Float.round(precision) == result 
+  end
 
   test "1 + 1 -> postfix" do
     expr = "1 + 1"
@@ -106,6 +113,13 @@ defmodule ExprTest do
   test "Eval factorial expression" do
     expr = "5! + 3.5 * 2"
     result = [127.0]
+
+    assert Expr.eval!(expr) == result
+  end
+
+  test "Eval modulo expression" do
+    expr = "9 % 2"
+    result = [1.0]
 
     assert Expr.eval!(expr) == result
   end
