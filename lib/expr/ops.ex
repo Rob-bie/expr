@@ -48,10 +48,7 @@ defmodule Expr.Ops do
   def fact(0, acc), do: acc
   def fact(n, acc), do: fact(n - 1, acc * n)
 
-  def fmod(x, y) do
-    n = Float.floor( x / y )
-    x - y * n
-  end
-
+  def fmod(n, denom), do: n - denom * Float.floor( n / denom )
+  
 end
 
