@@ -1,14 +1,8 @@
 defmodule Expr.Ops do
-  
-  alias __MODULE__ 
 
-  def __struct__ do
-    %{
-      :p => nil,
-      :f => nil,
-      :a => :r
-    }
-  end
+  alias __MODULE__
+
+  defstruct p: nil, f: nil, a: :r
 
   def oprs do
     %{"#"     => %Ops{:p => 4, :f => &(&1 * - 1)},
@@ -49,6 +43,6 @@ defmodule Expr.Ops do
   def fact(n, acc), do: fact(n - 1, acc * n)
 
   def fmod(n, denom), do: n - denom * Float.floor( n / denom )
-  
+
 end
 
