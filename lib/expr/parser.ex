@@ -19,7 +19,7 @@ defmodule Expr.Parser do
     |> format
     |> parse
   end
-  
+
   def lex(input) do
     regex = ~r/()[\+|)|\(|\-|\*|\/|^|!|]()/
 
@@ -88,7 +88,7 @@ defmodule Expr.Parser do
     cond do
       is_number(prev) and is_number(next) ->
         format(t, copy, ["-"|acc])
-      prev == "!" -> 
+      prev == "!" ->
         format(t, copy, ["-"|acc])
       prev == ")" and next == "(" ->
         format(t, copy, ["-"|acc])
@@ -118,7 +118,7 @@ defmodule Expr.Parser do
       is_number(prev)            -> format(t, copy, ["("|["*"|acc]])
       prev == ")" and empty?     -> format(t, copy, ["("|["*"|acc]])
       true                       -> format(t, copy, ["("|acc])
-    end  
+    end
   end
 
   def format([{token, _}|t], copy, acc) do
@@ -130,7 +130,7 @@ defmodule Expr.Parser do
   def conv([], acc, _), do: Enum.reverse(acc)
 
   def conv([token|t], acc, vars) do
-    is_num? = Float.parse(token)
+    is_num? = num_parse(token)
     constant? = constants[token]
     variable? = vars[token]
     cond do
@@ -138,6 +138,15 @@ defmodule Expr.Parser do
       constant? != nil  -> conv(t, [constant?|acc], vars)
       variable? != nil  -> conv(t, [variable?|acc], vars)
       true              -> conv(t, [token|acc], vars)
+    end
+  end
+
+  defp num_parse(token) do
+    case Integer.parse(token) do
+      {int, ""} ->
+        {int, ""}
+      _ ->
+        Float.parse(token)
     end
   end
 
