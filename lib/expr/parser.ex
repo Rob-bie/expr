@@ -46,12 +46,12 @@ defmodule Expr.Parser do
 
   def parse([e|t], {ops, rpn}) do
     {top, _} = pop(ops)
-    a = oprs[e].a
+    a = oprs()[e].a
     cond do
       top == nil or top == "(" -> parse(t, {push(ops, e), rpn})
-      a == :r and oprs[e].p >= oprs[top].p ->
+      a == :r and oprs()[e].p >= oprs()[top].p ->
         parse(t, {push(ops, e), rpn})
-      oprs[e].p > oprs[top].p  -> parse(t, {push(ops, e), rpn})
+      oprs()[e].p > oprs()[top].p  -> parse(t, {push(ops, e), rpn})
       true                     -> parse(t, shift(e, {ops, rpn}))
     end
   end
@@ -60,7 +60,7 @@ defmodule Expr.Parser do
     {top, stack} = pop(ops)
     cond do
       top == nil or top == "(" -> {push(ops, e), rpn}
-      oprs[top].p >= oprs[e].p -> shift(e, {stack, push(rpn, top)})
+      oprs()[top].p >= oprs()[e].p -> shift(e, {stack, push(rpn, top)})
       true                     -> {push(ops, e), rpn}
     end
   end
@@ -131,7 +131,7 @@ defmodule Expr.Parser do
 
   def conv([token|t], acc, vars) do
     is_num? = num_parse(token)
-    constant? = constants[token]
+    constant? = constants()[token]
     variable? = vars[token]
     cond do
       is_num? != :error -> conv(t, [elem(is_num?, 0)|acc], vars)

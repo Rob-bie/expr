@@ -4,7 +4,7 @@ defmodule Expr.Ops do
 
   defstruct p: nil, f: nil, a: :r
 
-  def oprs do
+  def oprs() do
     %{"#"     => %Ops{:p => 4, :f => &(&1 * - 1)},
       "!"     => %Ops{:p => 4, :f => &fact/1},
       "abs"   => %Ops{:p => 4, :f => &abs/1},
