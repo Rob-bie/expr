@@ -19,6 +19,8 @@ defmodule Expr.Ops do
       "ceil"  => %Ops{:p => 4, :f => &Float.ceil/1},
       "floor" => %Ops{:p => 4, :f => &Float.floor/1},
       "log10" => %Ops{:p => 4, :f => &:math.log10/1},
+      "min"   => %Ops{:p => 4, :f => &min/2},
+      "max"   => %Ops{:p => 4, :f => &max/2},
       "^"     => %Ops{:p => 4, :f => &:math.pow/2},
       "*"     => %Ops{:p => 3, :f => &(&1 * &2), :a => :l},
       "/"     => %Ops{:p => 3, :f => &(&1 / &2), :a => :l},
