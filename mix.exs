@@ -5,13 +5,13 @@ defmodule ExCalc.Mixfile do
     [app: :expr,
      version: "0.1.0",
      elixir: "~> 1.0",
-     description: description,
-     package: package]
+     description: description(),
+     package: package()]
   end
 
   defp description do
     """
-    An Elixir library for parsing and evaluating mathematical 
+    An Elixir library for parsing and evaluating mathematical
     expressions
     """
   end

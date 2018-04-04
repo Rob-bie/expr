@@ -32,6 +32,8 @@ Afterwards, run the command ```mix deps.get``` and you're good to go.
 
 | Operator  |Precedence | Associativity |
 | :-------------: | :-------------: | :------------: |
+| min  | 4  | RIGHT |
+| max  | 4  | RIGHT |
 | log10  | 4  | RIGHT |
 | floor  | 4  | RIGHT |
 | ceil  | 4  | RIGHT |
