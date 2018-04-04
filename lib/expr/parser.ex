@@ -143,10 +143,9 @@ defmodule Expr.Parser do
 
   defp num_parse(token) do
     case Integer.parse(token) do
-      {int, ""} ->
-        {int, ""}
-      _ ->
-        Float.parse(token)
+      {int, ""} -> {int, ""}
+      {int, "," <> _ = rest} -> {int, rest}
+      _ -> Float.parse(token)
     end
   end
 
